@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@android:color/black">
+
+    <Button
+        android:id="@+id/top_menu_bar"
+        android:text="top bar"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/video_mode_toggle_btn"
+        android:text="modes"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/annotation_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/top_menu_bar"
+        android:layout_above="@id/bottom_menu_bar">
+
+        <!--
+            A layout is required for wrapping the vlc layout.
+            Otherwise vlc adds black borders on the left and
+            the right side of the video. Therefore it would be
+            very difficult to remove this black stripes.
+        -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintDimensionRatio="W,16:9">
+
+            <TextureView
+                android:id="@+id/video_texture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/annotation_background_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
+            <ImageView
+                android:id="@+id/annotation_canvas_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_menu_bar"
+        android:text="bottom bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="0dp">
+
+        <Button
+            android:id="@+id/play_btn"
+            android:text="play"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/trash_btn"
+            android:text="trash"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>
